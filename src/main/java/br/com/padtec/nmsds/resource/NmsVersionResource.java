@@ -3,7 +3,7 @@ package br.com.padtec.nmsds.resource;
 import java.util.List;
 
 import br.com.padtec.nmsds.controller.NmsVersionsController;
-import br.com.padtec.nmsds.entity.NmsVersions;
+import br.com.padtec.nmsds.entity.NmsDeployment;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -37,28 +37,28 @@ public class NmsVersionResource {
 	private NmsVersionsController nmsVersionController;
 	
 	@GET  
-	public List<NmsVersions> findAll() {  
-	    return NmsVersions.listAll();  
+	public List<NmsDeployment> findAll() {  
+	    return NmsDeployment.listAll();  
 	}
 	
 	@POST  
 	@Transactional  
-	public Response create(NmsVersions nmsVersion) {
+	public Response create(NmsDeployment nmsVersion) {
 		System.out.println(nmsVersion.getNmsVersion());
-		NmsVersions.persist(nmsVersion);  
+		NmsDeployment.persist(nmsVersion);  
 	    return Response.ok(nmsVersion).status(201).build();  
 	}
 	
 	@PUT  
 	@Path("{id}")  
 	@Transactional  
-	public Response update(@PathParam("id") Long id, NmsVersions nmsVersion) {
+	public Response update(@PathParam("id") Long id, NmsDeployment nmsVersion) {
 
 	    if (nmsVersionController.isNmsVersionNameIsNotEmpty(nmsVersion)) {  
 	        return Response.ok("Food was not found").type(MediaType.APPLICATION_JSON_TYPE).build();  
 	    }
 
-	    NmsVersions nmsVersionsEntity = nmsVersionController.update(id, nmsVersion);
+	    NmsDeployment nmsVersionsEntity = nmsVersionController.update(id, nmsVersion);
 
 	    return Response.ok(nmsVersionsEntity).build();  
 	}
@@ -67,7 +67,7 @@ public class NmsVersionResource {
 	@Path("{id}")  
 	@Transactional  
 	public Response delete(@PathParam("id") Long id) {  
-		NmsVersions nmsVersionsEntity = NmsVersions.findById(id);
+		NmsDeployment nmsVersionsEntity = NmsDeployment.findById(id);
 
 	    if (nmsVersionsEntity == null) {  
 	        throw new WebApplicationException("Food with id " + id + " does not exist.", Response.Status.NOT_FOUND);  

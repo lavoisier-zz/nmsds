@@ -9,7 +9,7 @@ import java.util.Objects;
 
 @Entity
 
-public class NmsVersions extends PanacheEntityBase {
+public class NmsDeployment extends PanacheEntityBase {
 	
 	@Id  
 	@GeneratedValue(strategy = GenerationType.IDENTITY)  
