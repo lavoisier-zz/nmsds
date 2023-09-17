@@ -7,7 +7,7 @@ import jakarta.ws.rs.core.Response;
 
 @ApplicationScoped
 
-public class NmsVersionsController {
+public class NmsDeploymentController {
 	
 	public NmsDeployment update(Long id, NmsDeployment nmsVersions) {  
 	    NmsDeployment nmsEntity = NmsDeployment.findById(id);

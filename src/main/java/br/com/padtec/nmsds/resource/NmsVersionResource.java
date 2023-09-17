@@ -2,7 +2,7 @@ package br.com.padtec.nmsds.resource;
 
 import java.util.List;
 
-import br.com.padtec.nmsds.controller.NmsVersionsController;
+import br.com.padtec.nmsds.controller.NmsDeploymentController;
 import br.com.padtec.nmsds.entity.NmsDeployment;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -34,7 +34,7 @@ public class NmsVersionResource {
 	 */
 
 	@Inject
-	private NmsVersionsController nmsVersionController;
+	private NmsDeploymentController nmsVersionController;
 	
 	@GET  
 	public List<NmsDeployment> findAll() {  
@@ -78,12 +78,5 @@ public class NmsVersionResource {
 	}  
 	
 	
-	/*
-	 * @GET
-	 * 
-	 * @Produces(MediaType.TEXT_HTML) public String hello() { return
-	 * "<html><body><h1>Ola Davi, como vai você \\n está tudo bem ? \\n Nos vamos almocar onde</h1></body></html>"
-	 * ; }
-	 */
-    
+
 }

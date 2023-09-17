@@ -23,10 +23,22 @@ public class NmsDeployment extends PanacheEntityBase {
 
 	@Column  
 	private String customername;
+	
+	@Column
+	private String deploymentDate;
+	
 
 	public String getNmsVersion() {
 		// TODO Auto-generated method stub
 		return nmsversion;
+	}
+
+	public String getDeploymentDate() {
+		return deploymentDate;
+	}
+
+	public void setDeploymentDate(String deploymentDate) {
+		this.deploymentDate = deploymentDate;
 	}
 
 	public void setNmsVersion(String nmsVersion2) {
