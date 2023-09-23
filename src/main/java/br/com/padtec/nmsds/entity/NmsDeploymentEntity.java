@@ -5,11 +5,10 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 import jakarta.persistence.*;
 
-import java.util.Objects;
 
 @Entity
 
-public class NmsDeployment extends PanacheEntityBase {
+public class NmsDeploymentEntity extends PanacheEntityBase {
 	
 	@Id  
 	@GeneratedValue(strategy = GenerationType.IDENTITY)  

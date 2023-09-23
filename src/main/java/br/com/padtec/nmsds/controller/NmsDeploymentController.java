@@ -1,6 +1,6 @@
 package br.com.padtec.nmsds.controller;
 
-import br.com.padtec.nmsds.entity.NmsDeployment;
+import br.com.padtec.nmsds.entity.NmsDeploymentEntity;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.core.Response;
@@ -9,26 +9,27 @@ import jakarta.ws.rs.core.Response;
 
 public class NmsDeploymentController {
 	
-	public NmsDeployment update(Long id, NmsDeployment nmsVersions) {  
-	    NmsDeployment nmsEntity = NmsDeployment.findById(id);
+	public NmsDeploymentEntity update(Long id, NmsDeploymentEntity nmsDeploymentVersions) {  
+	    NmsDeploymentEntity nmsEntity = NmsDeploymentEntity.findById(id);
 
 	    if (nmsEntity == null) {  
 	        throw new WebApplicationException("NmsVersions with id of " + id + " does not exist.", Response.Status.NOT_FOUND);  
 	    }
 
-	    nmsEntity.setNmsVersion(nmsVersions.getNmsVersion());  
-	    nmsEntity.setBuild(nmsVersions.getBuild());
+	    nmsEntity.setNmsVersion(nmsDeploymentVersions.getNmsVersion());  
+	    nmsEntity.setBuild(nmsDeploymentVersions.getBuild());
+	    System.out.println("Passei aqui");
 
 	    return nmsEntity;  
 	}
 
 	/**  
 	 * This method is main purpose to show simple "Business" example  
-	 * @param nmsVersions  
+	 * @param nmsDeploymentVersions  
 	 * @return  
 	 */  
-	public boolean isNmsVersionNameIsNotEmpty(NmsDeployment nmsVersions) {  
-	    return nmsVersions.getNmsVersion().isEmpty();  
+	public boolean isNmsVersionNameIsNotEmpty(NmsDeploymentEntity nmsDeploymentVersions) {  
+	    return nmsDeploymentVersions.getNmsVersion().isEmpty();  
 
 	}
 }

@@ -8,13 +8,15 @@
     <script type="text/javascript">
 
 $(document).ready(function () {
-    $.getJSON("http://localhost:8080/nmsds/",
+    $.getJSON("http://localhost:8080/nmsds/customers",
     function (json) {
         var tr;
         for (var i = 0; i < json.length; i++) {
             tr = $('<tr/>');
-            tr.append("<td>" + json[i].build + "</td>");
-            tr.append("<td>" + json[i].customername + "</td>");
+             tr.append("<td>" + json[i].id + "</td>");
+            tr.append("<td>" + json[i].customerLongName + "</td>");
+            tr.append("<td>" + json[i].customerShortName + "</td>");
+            tr.append("<td>" + json[i].details + "</td>");
             $('table').append(tr);
         }
     });
@@ -25,15 +27,16 @@ $(document).ready(function () {
 <body>
 <div align="left" style="margin-top: 10%;">
     <fieldset style="border: none;">
-        <legend><strong>NMS Version List</strong></legend>
+        <legend><strong>Customer List</strong></legend>
 
         <!-- table to show data -->
         <table class="greyGridTable">
             <thead>
             <tr>
-                <th>Build</th>
-                <th>Version</th>
-                <th>Other</th>
+                <th>Id</th>
+                <th>ShortName</th>
+                <th>LongName</th>
+                <th>Details</th>
             </tr>
             </thead>
             <tbody>

@@ -20,4 +20,28 @@ public class NmsVersionsEntity extends PanacheEntityBase {
 	@Column
 	private Date buildDate;
 
+	public String getNmsVersion() {
+		return nmsVersion;
+	}
+
+	public void setNmsVersion(String nmsVersion) {
+		this.nmsVersion = nmsVersion;
+	}
+
+	public String getShortNmsVersion() {
+		return shortNmsVersion;
+	}
+
+	public void setShortNmsVersion(String shortNmsVersion) {
+		this.shortNmsVersion = shortNmsVersion;
+	}
+
+	public Date getBuildDate() {
+		return buildDate;
+	}
+
+	public void setBuildDate(Date buildDate) {
+		this.buildDate = buildDate;
+	}
+
 }

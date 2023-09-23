@@ -2,8 +2,9 @@ package br.com.padtec.nmsds.resource;
 
 import java.util.List;
 
-import br.com.padtec.nmsds.controller.NmsDeploymentController;
+import br.com.padtec.nmsds.controller.NmsVersionsController;
 import br.com.padtec.nmsds.entity.NmsDeploymentEntity;
+import br.com.padtec.nmsds.entity.NmsVersionsEntity;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -19,46 +20,38 @@ import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
-
-
-@Path("/nmsds")
+@Path("/nmsds/nmsversions")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 
-public class NmsDeploymentEndPoint {
-
-	/*
-	 * @GET // @Produces(MediaType.TEXT_PLAIN) public String hello() { return
-	 * "Ola Davi, como vai você \n está tudo bem ? \n Nos vamos almocar onde ?"; }
-	 */
+public class NmsVersionsEndPoint {
 
 	@Inject
-	private NmsDeploymentController nmsDeploymentController;
+	private NmsVersionsController nmsVersionsController;
 	
 	@GET
-	public List<NmsDeploymentEntity> findAll() {  
-	    return NmsDeploymentEntity.listAll();  
+	public List<NmsVersionsEntity> findAll() {  
+	    return NmsVersionsEntity.listAll();  
 	}
 	
 	@POST  
 	@Transactional  
-	public Response create(NmsDeploymentEntity nmsVersion) {
+	public Response create(NmsVersionsEntity nmsVersion) {
 		System.out.println(nmsVersion.getNmsVersion());
-		NmsDeploymentEntity.persist(nmsVersion);  
+		NmsVersionsEntity.persist(nmsVersion);  
 	    return Response.ok(nmsVersion).status(201).build();  
 	}
-	
 	@PUT  
 	@Path("{id}")  
 	@Transactional  
-	public Response update(@PathParam("id") Long id, NmsDeploymentEntity nmsVersion) {
+	public Response update(@PathParam("id") Long id, NmsVersionsEntity nmsVersion) {
 
-	    if (nmsDeploymentController.isNmsVersionNameIsNotEmpty(nmsVersion)) {  
-	        return Response.ok("Food was not found").type(MediaType.APPLICATION_JSON_TYPE).build();  
+	    if (nmsVersionsController.isNmsVersionNameIsNotEmpty(nmsVersion)) {  
+	        return Response.ok("NMSVersion was not found").type(MediaType.APPLICATION_JSON_TYPE).build();  
 	    }
 
-	    NmsDeploymentEntity nmsVersionsEntity = nmsDeploymentController.update(id, nmsVersion);
+	    NmsVersionsEntity nmsVersionsEntity = nmsVersionsController.update(id, nmsVersion);
 
 	    return Response.ok(nmsVersionsEntity).build();  
 	}
@@ -67,10 +60,10 @@ public class NmsDeploymentEndPoint {
 	@Path("{id}")  
 	@Transactional  
 	public Response delete(@PathParam("id") Long id) {  
-		NmsDeploymentEntity nmsVersionsEntity = NmsDeploymentEntity.findById(id);
+		NmsVersionsEntity nmsVersionsEntity = NmsVersionsEntity.findById(id);
 
 	    if (nmsVersionsEntity == null) {  
-	        throw new WebApplicationException("Food with id " + id + " does not exist.", Response.Status.NOT_FOUND);  
+	        throw new WebApplicationException("Version id " + id + " does not exist.", Response.Status.NOT_FOUND);  
 	    }
 
 	    nmsVersionsEntity.delete();  
@@ -78,5 +71,6 @@ public class NmsDeploymentEndPoint {
 	}  
 	
 	
-
+	
+	
 }
