@@ -1,47 +1,15 @@
-<html>
-<head>
-    <!-- little bit of css to beutify the table -->
-    <link rel="stylesheet" type="text/css" href="stylesheet.css" media="screen" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-
-
-    <script type="text/javascript">
-
-$(document).ready(function () {
-    $.getJSON("http://localhost:8080/nmsds/",
-    function (json) {
-        var tr;
-        for (var i = 0; i < json.length; i++) {
-            tr = $('<tr/>');
-            tr.append("<td>" + json[i].build + "</td>");
-            tr.append("<td>" + json[i].customername + "</td>");
-            $('table').append(tr);
-        }
-    });
-});
-</script>
-</head>
-
-<body>
-<div align="left" style="margin-top: 10%;">
-    <fieldset style="border: none;">
-        <legend><strong>NMS Version List</strong></legend>
-
-        <!-- table to show data -->
-        <table class="greyGridTable">
-            <thead>
-            <tr>
-                <th>Build</th>
-                <th>Version</th>
-                <th>Other</th>
-            </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
-    </fieldset>
-</div>
-
-</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vite App</title>
+    <script type="module" crossorigin src="/assets/index-8552dfb9.js"></script>
+    <link rel="stylesheet" href="/assets/index-9e4a3ac9.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    
+  </body>
 </html>

@@ -17,12 +17,12 @@ table.greyGridTable td:nth-child(even) {
 }
 table.greyGridTable thead {
   background: #FFFFFF;
-  border-bottom: 4px solid #333333;
+  border-bottom: 2px solid rgb(128, 128, 128);
 }
 table.greyGridTable thead th {
   font-size: 15px;
   font-weight: bold;
-  color: #333333;
+  color: rgb(0, 128, 255);
   text-align: center;
   border-left: 2px solid #333333;
 }
@@ -31,5 +31,5 @@ table.greyGridTable thead th:first-child {
 }
 
 table.greyGridTable tfoot td {
-  font-size: 14px;
+  font-size: 18px;
 }
